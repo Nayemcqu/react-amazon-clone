@@ -1,0 +1,12 @@
+/* src/index.css */
+@import "tailwindcss";
+
+/* You can keep your global styles below this line */
+/* ... */
+
+@theme {
+  --color-amazon-background: #EAEDED;
+  --color-amazon-default: #131921;
+  --color-amazon-light-blue: #232F3A;
+  --color-amazon-yellow: #FEBD69;
+}
