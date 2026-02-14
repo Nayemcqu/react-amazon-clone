@@ -2,6 +2,7 @@ import { Carousel } from "./Carousel";
 import { HomePageCard } from "./HomePageCard";
 import { data } from "../utils/homePageCard";
 import { CarouselCategory } from "./CarouselCategory";
+import { CarouselProduct } from "./CarouselProduct";
 export function HomePage(){
 
 
@@ -27,7 +28,11 @@ link={item.link} key={index}
     <img src="images/banner_image_2.jpg" className="xl:hidden"/>
 </div>
 </div>
+<CarouselProduct/>
 <CarouselCategory />
+<div className="h-[200px]">
+    <img src="images/banner_image.jpg" className="h-[100%] m-auto"/>
+</div>
 </div>
 
     </div>
