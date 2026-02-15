@@ -3,7 +3,7 @@ import { Navigation,Autoplay } from "swiper/modules";
 import "swiper/css"
 import "swiper/css/navigation";
 
-export function Carousel() {
+export default function Carousel() {
     
 return (
 <div className="h-[600px] bg-white ">

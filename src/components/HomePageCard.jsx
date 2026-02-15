@@ -1,4 +1,4 @@
-export function HomePageCard({title,img,link,key}){
+export default function HomePageCard({title,img,link,key}){
 
     return (
 <div className="h-[420px] bg-white z-30 m-3" key={key} >

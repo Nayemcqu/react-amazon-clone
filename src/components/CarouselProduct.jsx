@@ -1,9 +1,10 @@
 import { Swiper,SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 import "swiper/css"
 import "swiper/css/navigation";
 
-export function CarouselProduct(){
+export default function CarouselProduct(){
 
 
 
@@ -18,7 +19,9 @@ modules={[Navigation]}
 >
 {Array.from( {length:9}, (_,i)=>
 <SwiperSlide key={i}>
+<Link to={`/product/${i}`}>
 <img src={`images/product_${i}_small.jpg`} />
+</Link>
 </SwiperSlide>
 
 

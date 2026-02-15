@@ -1,9 +1,9 @@
-import { Carousel } from "./Carousel";
-import { HomePageCard } from "./HomePageCard";
+
 import { data } from "../utils/homePageCard";
-import { CarouselCategory } from "./CarouselCategory";
-import { CarouselProduct } from "./CarouselProduct";
-export function HomePage(){
+import { Carousel, HomePageCard, CarouselCategory, CarouselProduct } from "./index";
+
+
+export default function HomePage(){
 
 
 

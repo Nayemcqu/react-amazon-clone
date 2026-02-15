@@ -3,7 +3,7 @@ import { Navigation } from "swiper/modules";
 import "swiper/css"
 import "swiper/css/navigation";
 
-export function CarouselCategory(){
+export default function CarouselCategory(){
 
 return(
 <div className="bg-white m-3">
