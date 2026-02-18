@@ -15,7 +15,7 @@ navigate({pathname:"search",
     search:`${
         createSearchParams({
             category:`${category}`,
-            searchTerm:`$(searchTerm)`
+            searchTerm:`${searchTerm}`
         })
     }`
 })

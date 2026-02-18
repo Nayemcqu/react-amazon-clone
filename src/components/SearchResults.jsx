@@ -1,8 +1,82 @@
+import { useSearchParams,Link } from "react-router-dom";
+import { useEffect,useState } from "react";
+import { callApi } from "../utils/CallApi";
+import ProductsDetails from "./ProductsDetails";
+import { GB_Currency } from "../utils/constants";
 export default function SearchResults(){
+
+    const [searchParams]=useSearchParams();
+const [products,setProducts]=useState(null);
+
+function getSearchResults(){
+
+    const searchTerm=searchParams.get("searchTerm");
+    const category=searchParams.get("category");
+
+callApi(`data/search.json`).then((searchResults)=>{
+     console.log("searchResults:", searchResults);
+  console.log("category:", category);
+  console.log("searchTerm:", searchTerm);
+const categoryResults=searchResults[category];
+  console.log("categoryResults:", categoryResults);
+
+if(searchTerm){
+const results=categoryResults.filter(product=>product.title.toLowerCase().includes(searchTerm.toLowerCase()));
+setProducts(results);
+
+}
+else{
+setProducts(categoryResults);
+}
+
+})
+
+}
+
+    useEffect(()=>{
+getSearchResults();
+
+},[searchParams]);
+
 
 
 return(
-<div>SearchPage</div>
+<div className="min-w-[1200px] max-w-[1300px]  m-auto p-4">
+
+{ products && 
+
+products.map((product,key)=>{
+
+
+return (
+
+<Link key={key} to={`/product/${product.id}`}>
+<div className="h-[250px] grid grid-cols-12 rounded mt-1 mb-1">
+
+<div className="col-span-2 bg-gray-200">
+<img src={product.image_small } className="m-auto p-4"/>
+
+</div>
+
+<div className="col-span-10  bg-gray-50 border border-gray-100 hover:bg-gray-100 ">
+
+<div className="font-medium text-black p-2 ">
+
+<ProductsDetails product={product} rating={true}/>
+<div className="text-xl xl:text-2xl pt-1">{GB_Currency.format(product.price)}</div>
+</div>
+
+</div>
+
+</div>
+</Link>
+)
+})
+
+}
+
+
+</div>
 );
 
 }

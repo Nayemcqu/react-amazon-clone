@@ -1,14 +1,22 @@
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { callApi } from "../utils/CallApi";
 import ProductsDetails from "./ProductsDetails";
 import { GB_Currency } from "../utils/constants";
+import {addToCart} from "../redux/cartSlice"
+import { useDispatch } from "react-redux";
+
 export default function ProductPage(){
+
 const {id}=useParams();
-
 const[product,setProduct]=useState(null);
-
+const [quantity,setQuantity]=useState("1");
+const dispatch=useDispatch()
  
+
+
+
+
 useEffect(()=>{
 const getProduct=async()=>{
 const data=await callApi(`data/products.json`);
@@ -53,7 +61,9 @@ return( product &&
 <div className="text-sm xl:text-base font-semibold text-blue-500 mt-1">Free Delivery</div>
 <div className="text-base xl:text-xl font-semibold text-green-700 mt-1">In Stock</div>
 <div className="text-base xl:text-xl  ">Quantity:
-<select className="p-2 bg-white border rounded focus:border-indigo-600" >
+<select className="p-2 bg-white border rounded focus:border-indigo-600" 
+onChange={(e)=>setQuantity(e.target.value)}
+>
 <option>
     1
 </option>
@@ -67,8 +77,14 @@ return( product &&
 </select>
 
 </div>
+<Link to={"/checkout"}>
+<button className="bg-yellow-400 w-full p-3 text-xs xl:text-base
+ hover:bg-yellow-500 mt-3 cursor-pointer" onClick={()=>dispatch(addToCart({
+    ...product,
+    quantity
+ }))}>Add to Cart</button>
 
-<button className="bg-yellow-400 w-full p-3 text-xs xl:text-base hover:bg-yellow-500 mt-3">Add to Cart</button>
+</Link>
 
 </div>
 
