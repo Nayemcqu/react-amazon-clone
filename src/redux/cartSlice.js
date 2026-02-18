@@ -25,7 +25,18 @@ state.productNumber=state.productNumber+parseInt(action.payload.quantity);
 },
 removeFromCart:(state,action)=>{
 
+// find the product removing the Array
+const productToRemove=state.prodcuts.find((product)=>product.id===action.payload);
 
+//remove the quantity from the product number
+state.productNumber=state.productNumber-productToRemove.quantity;
+
+//find the index of the removing
+const index=state.prodcuts.findIndex((product)=>product.id===action.payload)
+
+// remove  from the Array
+
+state.prodcuts.splice(index,1);
 }
 
 }

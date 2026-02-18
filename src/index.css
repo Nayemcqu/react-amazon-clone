@@ -10,3 +10,13 @@
   --color-amazon-light-blue: #232F3A;
   --color-amazon-yellow: #FEBD69;
 }
+
+@layer components{
+
+.btn {
+@apply bg-yellow-400 w-full p-3 text-xs xl:text-base
+ hover:bg-yellow-500 mt-3 cursor-pointer;
+
+}
+
+}

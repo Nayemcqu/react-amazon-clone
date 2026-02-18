@@ -78,8 +78,7 @@ onChange={(e)=>setQuantity(e.target.value)}
 
 </div>
 <Link to={"/checkout"}>
-<button className="bg-yellow-400 w-full p-3 text-xs xl:text-base
- hover:bg-yellow-500 mt-3 cursor-pointer" onClick={()=>dispatch(addToCart({
+<button className="btn" onClick={()=>dispatch(addToCart({
     ...product,
     quantity
  }))}>Add to Cart</button>
