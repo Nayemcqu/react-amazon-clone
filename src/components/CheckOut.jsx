@@ -2,12 +2,14 @@ import { useSelector,useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ProductsDetails from "./ProductsDetails";
 import { GB_Currency } from "../utils/constants";
-import { removeFromCart } from "../redux/cartSlice";
+import { removeFromCart,incrementProduct,decrementProduct } from "../redux/cartSlice";
+
 export default function CheckOut(){
 
 const products=useSelector((state)=>state.cart.prodcuts);
 const itemsNumber=useSelector((state)=>state.cart.productNumber);
 const subTotal=useSelector((state)=>state.cart.prodcuts.reduce((subTotal,product)=>subTotal+(product.price*product.quantity),0));
+
 const dispatch=useDispatch();
 return (
 <div className="h-screen bg-amazon-background">
@@ -50,9 +52,9 @@ Delete
 
 <div className="grid grid-cols-3 w-20 text-center"> 
 
-<div className="text-xl xl:text-2xl bg-gray-400 rounded ">-</div>
+<div className="text-xl xl:text-2xl bg-gray-400 rounded cursor-pointer" onClick={()=>dispatch(decrementProduct(product.id))}>-</div>
 <div className="text-lg xl:text-xl bg-gray-200">{product.quantity} </div>
-<div className="text-xl xl:text-2xl bg-gray-400 rounded">+</div>
+<div className="text-xl xl:text-2xl bg-gray-400 rounded cursor-pointer" onClick={()=>dispatch(incrementProduct(product.id))}>+</div>
 
 </div>
 

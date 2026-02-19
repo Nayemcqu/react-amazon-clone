@@ -37,10 +37,28 @@ const index=state.prodcuts.findIndex((product)=>product.id===action.payload)
 // remove  from the Array
 
 state.prodcuts.splice(index,1);
+},
+
+incrementProduct:(state,action)=>{
+
+const product=state.prodcuts.find((product)=>product.id===action.payload)
+product.quantity++;
+state.productNumber++;
+},
+
+decrementProduct:(state,action)=>{
+
+const product=state.prodcuts.find((product)=>product.id===action.payload)
+
+if(product.quantity>1){
+    product.quantity--;
+    state.productNumber--;
+}
+
 }
 
 }
 });
 
-export const {addToCart,removeFromCart}=cartSlice.actions;
+export const {addToCart,removeFromCart,incrementProduct,decrementProduct}=cartSlice.actions;
 export default cartSlice.reducer;
